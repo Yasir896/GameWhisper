@@ -7,8 +7,7 @@ internal fun GameResponse.toGame(): Game {
     return Game(
         id = id,
         title = title,
-        description = description,
-        status = status,
+        description = shortDescription,
         genre = genre,
         platform = platform,
         publisher = publisher,

@@ -8,7 +8,7 @@ import io.ktor.http.takeFrom
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-private val BASE_URL = "https://www.freetogame.com/api/"
+private val BASE_URL = "https://www.freetogame.com/"
 internal abstract class KtorApi {
     val client = HttpClient {
         install(ContentNegotiation) {
@@ -22,7 +22,7 @@ internal abstract class KtorApi {
     fun HttpRequestBuilder.pathUrl(path: String) {
         url {
             takeFrom(BASE_URL)
-            path("games", path)
+            path("api", path)
         }
     }
 

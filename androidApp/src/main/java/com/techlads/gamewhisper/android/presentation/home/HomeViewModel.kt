@@ -34,9 +34,10 @@ class HomeViewModel(
             } catch (error: Throwable) {
                 uiState = uiState.copy(
                     loading = false,
-                    errorMessage = "Something went wrong, please try again."
+                    errorMessage = "$error"
                 )
             }
+
 
         }
     }
