@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
@@ -32,43 +33,41 @@ fun HomeScreen(
             .background(color = MaterialTheme.colors.background)
     ) {
         if (uiState.loading && uiState.games.isNotEmpty()) {
-            Row(
+            Box(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
+                    .fillMaxSize(),
+                contentAlignment = Alignment.Center
             ) {
                 CircularProgressIndicator(
+                    modifier = Modifier.size(50.dp),
                     color = Color.Red
                 )
             }
         }
-
-        if (!uiState.loading && uiState.errorMessage.isNullOrBlank()) {
-            Row(
+        else if (!uiState.loading && uiState.errorMessage.isNullOrBlank()) {
+            Box(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
+                    .fillMaxSize(),
+                contentAlignment = Alignment.Center
             ) {
                 uiState.errorMessage?.let { Text(text = it) }
             }
         }
-
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            itemsIndexed(
-                uiState.games,
-                key ={_, game -> game.id}
-            ) { index, game ->
-                GameListItem(game = game, onClick = { })
+        else if (!uiState.loading && uiState.games.isNotEmpty()) {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                contentPadding = PaddingValues(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                itemsIndexed(
+                    uiState.games,
+                    key ={_, game -> game.id}
+                ) { index, game ->
+                    GameListItem(game = game, onClick = { })
+                }
             }
         }
+
     }
 }

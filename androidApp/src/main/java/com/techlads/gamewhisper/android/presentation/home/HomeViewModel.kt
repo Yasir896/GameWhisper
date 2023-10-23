@@ -10,13 +10,14 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     val getGamesUseCase: GetGamesUseCase
-): ViewModel() {
+) : ViewModel() {
     var uiState by mutableStateOf(HomeScreenState())
 
 
     init {
         fetchGames()
     }
+
     private fun fetchGames() {
         viewModelScope.launch {
             uiState = uiState.copy(
@@ -37,8 +38,6 @@ class HomeViewModel(
                     errorMessage = "$error"
                 )
             }
-
-
         }
     }
 
