@@ -2,9 +2,10 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("org.jetbrains.compose")
-
+    id("kotlinx-serialization")
+    id("kotlin-parcelize")
     //Kotlinx Serialization
-    kotlin("plugin.serialization") version "1.8.0"
+    //kotlin("plugin.serialization") version "1.8.10"
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
