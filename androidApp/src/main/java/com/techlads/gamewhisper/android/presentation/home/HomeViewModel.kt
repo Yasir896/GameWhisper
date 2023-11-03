@@ -13,7 +13,6 @@ class HomeViewModel(
 ) : ViewModel() {
     var uiState by mutableStateOf(HomeScreenState())
 
-
     init {
         fetchGames()
     }
@@ -23,7 +22,6 @@ class HomeViewModel(
             uiState = uiState.copy(
                 loading = true
             )
-
             try {
                 val result = getGamesUseCase()
                 if (result.isNotEmpty()) {

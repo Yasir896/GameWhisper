@@ -25,6 +25,6 @@ internal data class GameResponse(
     val developer: String,
     @SerialName("release_date")
     val releaseDate: String,
-    /*@SerialName("freetogame_profile_url")
-    val freeToGameProfileUrl: String*/
+    @SerialName("freetogame_profile_url")
+    val freeToGameProfileUrl: String
 )

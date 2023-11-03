@@ -32,7 +32,7 @@ kotlin {
     }
 
     val coroutinesVersion = "1.7.3"
-    val ktorVersion = "2.3.5"
+    val ktorVersion = "2.3.3"
     val koinVersion = "3.5.0"
 
 
@@ -53,6 +53,7 @@ kotlin {
 
                 //Use api so that the android app can use it as well
                 api("io.insert-koin:koin-core:$koinVersion")
+
             }
         }
         val commonTest by getting {

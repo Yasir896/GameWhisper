@@ -12,9 +12,10 @@ private val BASE_URL = "https://www.freetogame.com/"
 internal abstract class KtorApi {
     val client = HttpClient {
         install(ContentNegotiation) {
-            json(Json {
+            json(json = Json {
+                prettyPrint = true
+                isLenient = true
                 ignoreUnknownKeys = true
-                useAlternativeNames = false
             })
         }
     }
